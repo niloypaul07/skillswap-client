@@ -1,36 +1,48 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# SkillSwap Client 🤝 (Frontend)
 
-## Getting Started
+This repository contains the Next.js (App Router) frontend for **SkillSwap**, a peer-to-peer tutoring and mentorship marketplace.
 
-First, run the development server:
+## 🚀 Key Features
+*   **Dynamic Landing Page**: Responsive sections including features, custom category browsing, step guides, client testimonials, and a newsletter CTA.
+*   **Interactive Hero Slider**: Auto-rotating card slideshow displaying top-rated listings.
+*   **Search & Multi-Filter System**: Filter listings by Category, Skill Level (Beginner/Intermediate/Expert), and Location Type (Online/In-person). Synchronized with URL parameters for shareable, bookmark-friendly filter states.
+*   **Recharts Data Visualizations**: Custom area charts and bar charts displaying system stats (Landing Page) and personal listing stats (Dashboard).
+*   **Personal Dashboard**: Protected view showing active listings and analytic breakdown of listing metrics.
+*   **Custom UI Modals**: Fully custom-designed confirmation modals for listing deletions, bookings, and auth handling (rather than default browser dialogs).
+*   **Authentication & Session Cache**: Access tokens stored securely in localStorage, intercepted on outgoing calls with a custom `useAxiosSecure` hook.
+*   **Polished Dark Theme UI**: Custom animations, smooth transitions, glassmorphic headers, and clean layouts.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+---
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🛠️ Tech Stack
+*   **Framework**: Next.js (App Router, Client & Server Components)
+*   **Language**: TypeScript (Type-safe interfaces)
+*   **Styles**: Tailwind CSS
+*   **Charts**: Recharts
+*   **Icons**: Lucide React
+*   **Alerts**: React Hot Toast
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## ⚙️ Setup and Installation
 
-## Learn More
+1. Install all dependencies:
+   ```bash
+   npm install
+   ```
 
-To learn more about Next.js, take a look at the following resources:
+2. Start the development server:
+   ```bash
+   npm run dev
+   ```
+   *The client will open on `http://localhost:3000`.*
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+3. Make sure the Server API is running on `http://localhost:5000` (configurable in Axios config).
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 📄 Key Folder Structure
+*   `src/app/`: App router page pages (Dashboard, Explore, Details, Auth).
+*   `src/components/`: Reusable cards, footer, layouts, skeletons, and navbar.
+*   `src/context/`: AuthContext providing login, register, and token management.
+*   `src/hooks/`: Custom `useAxiosSecure` request interceptor attaching headers.
