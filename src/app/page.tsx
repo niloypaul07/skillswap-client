@@ -79,7 +79,7 @@ export default function Home() {
   useEffect(() => {
     async function fetchFeaturedSkills() {
       try {
-        const res = await axios.get("http://localhost:5000/api/skills?limit=4");
+        const res = await axios.get(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000/api"}/skills?limit=4`);
         setSkills(res.data.skills);
       } catch (err) {
         console.error("Error fetching featured skills:", err);

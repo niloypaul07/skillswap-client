@@ -1,5 +1,7 @@
 "use client";
 
+const API_BASE = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000/api";
+
 import React, { useState, useEffect } from "react";
 import { useParams, useRouter } from "next/navigation";
 import Navbar from "../../../components/Navbar";
@@ -30,11 +32,11 @@ export default function SkillDetailsPage() {
     async function fetchSkillDetails() {
       setLoading(true);
       try {
-        const res = await axios.get(`http://localhost:5000/api/skills/${skillId}`);
+        const res = await axios.get(`${API_BASE}/skills/${skillId}`);
         setSkill(res.data);
 
         // Fetch related skills in same category
-        const relRes = await axios.get(`http://localhost:5000/api/skills?category=${res.data.category}&limit=3`);
+        const relRes = await axios.get(`${API_BASE}/skills?category=${res.data.category}&limit=3`);
         // Filter out current skill
         const filtered = relRes.data.skills.filter((s: any) => s._id !== skillId);
         setRelatedSkills(filtered);

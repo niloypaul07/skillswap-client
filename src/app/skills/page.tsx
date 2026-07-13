@@ -1,5 +1,7 @@
 "use client";
 
+const API_BASE = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000/api";
+
 import React, { useState, useEffect, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import Navbar from "../../components/Navbar";
@@ -43,7 +45,7 @@ function ExploreContent() {
       params.append("page", page.toString());
       params.append("limit", "8");
 
-      const res = await axios.get(`http://localhost:5000/api/skills?${params.toString()}`);
+      const res = await axios.get(`${API_BASE}/skills?${params.toString()}`);
       setSkills(res.data.skills);
       setTotalPages(res.data.pagination.pages);
       setTotalCount(res.data.pagination.total);
