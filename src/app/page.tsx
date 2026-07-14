@@ -122,68 +122,69 @@ export default function Home() {
     <div className="flex-1 flex flex-col bg-[#090a0f]">
       <Navbar />
 
-      {/* Hero Section */}
-      <section className="relative min-h-[60vh] max-h-[75vh] flex items-center justify-center overflow-hidden py-12 lg:py-16 px-4 border-b border-white/5 bg-radial from-[#1e1a38] via-[#090a0f] to-[#090a0f]">
-        <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center z-10">
+      {/* Hero Section — capped at 60–70vh, scales across breakpoints */}
+      <section className="relative h-[clamp(20rem,65vh,70vh)] flex items-center justify-center overflow-hidden px-4 sm:px-6 border-b border-white/5 bg-radial from-[#1e1a38] via-[#090a0f] to-[#090a0f]">
+        <div className="max-w-7xl mx-auto w-full h-full max-h-full grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 items-center z-10 py-6 md:py-8">
           
           {/* Left Column: CTAs and content */}
-          <div className="lg:col-span-7 space-y-6 text-center lg:text-left">
-            <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-xs text-primary font-medium">
-              <Sparkles className="h-3 w-3" />
+          <div className="lg:col-span-7 flex flex-col justify-center gap-3 sm:gap-4 md:gap-5 text-center lg:text-left">
+            <div className="inline-flex self-center lg:self-start items-center space-x-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-xs text-primary font-medium">
+              <Sparkles className="h-3 w-3 shrink-0" />
               <span>Empowering Collaborative Learning</span>
             </div>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-white leading-tight">
-              Learn Anything, 1-on-1, from <br className="hidden lg:inline" />
+            <h1 className="text-3xl sm:text-4xl md:text-5xl xl:text-[3.25rem] font-bold tracking-tight text-white leading-[1.15]">
+              Learn Anything, 1-on-1, from{" "}
+              <br className="hidden sm:inline" />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">
                 Expert Mentors
               </span>
             </h1>
-            <p className="max-w-xl mx-auto lg:mx-0 text-gray-400 text-sm md:text-base leading-relaxed">
+            <p className="max-w-xl mx-auto lg:mx-0 text-gray-400 text-sm md:text-base leading-relaxed line-clamp-3 md:line-clamp-none">
               SkillSwap matches you with passionate tutors and developers for structured live sessions, customized learning plans, and direct code reviews.
             </p>
-            <div className="flex flex-col sm:flex-row justify-center lg:justify-start items-center gap-4 pt-2">
+            <div className="flex flex-col sm:flex-row justify-center lg:justify-start items-stretch sm:items-center gap-3 pt-1">
               <Link
                 href="/skills"
-                className="w-full sm:w-auto px-8 py-3.5 bg-primary hover:bg-primary-hover text-white font-medium rounded-xl transition-all shadow-lg shadow-primary/20 hover:shadow-primary/30 hover:-translate-y-0.5 flex items-center justify-center space-x-2"
+                className="w-full sm:w-auto px-6 sm:px-8 py-3 bg-primary hover:bg-primary-hover text-white font-medium rounded-xl transition-all shadow-lg shadow-primary/20 hover:shadow-primary/30 hover:-translate-y-0.5 flex items-center justify-center space-x-2 text-sm sm:text-base"
               >
                 <span>Explore Skills</span>
-                <ArrowRight className="h-5 w-5" />
+                <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5" />
               </Link>
               <Link
                 href="/about"
-                className="w-full sm:w-auto px-8 py-3.5 bg-white/5 hover:bg-white/10 text-white font-medium rounded-xl border border-white/10 hover:border-white/20 transition-all flex items-center justify-center"
+                className="w-full sm:w-auto px-6 sm:px-8 py-3 bg-white/5 hover:bg-white/10 text-white font-medium rounded-xl border border-white/10 hover:border-white/20 transition-all flex items-center justify-center text-sm sm:text-base"
               >
                 Learn How it Works
               </Link>
             </div>
           </div>
 
-          {/* Right Column: Interactive Slider */}
-          <div className="lg:col-span-5 flex flex-col items-center">
+          {/* Right Column: Interactive Slider — desktop only so mobile stays within 60–70vh */}
+          <div className="hidden lg:flex lg:col-span-5 flex-col items-center justify-center min-h-0">
             <div className="w-full max-w-sm bg-card-bg border border-white/5 rounded-2xl overflow-hidden shadow-2xl relative transition-all duration-500 hover:border-primary/20">
               {/* Slide image */}
-              <div className="h-48 w-full relative">
+              <div className="h-40 xl:h-44 w-full relative">
                 <img
                   src={heroSlides[activeSlide].img}
                   alt={heroSlides[activeSlide].title}
                   className="w-full h-full object-cover transition-all duration-700 ease-in-out"
                 />
-                <span className="absolute top-4 left-4 bg-primary/95 text-white text-xs px-2.5 py-1 rounded-full font-semibold">
+                <span className="absolute top-3 left-3 bg-primary/95 text-white text-xs px-2.5 py-1 rounded-full font-semibold">
                   {heroSlides[activeSlide].category}
                 </span>
-                <span className="absolute bottom-4 right-4 bg-[#090a0f]/80 backdrop-blur-md text-secondary text-xs px-2.5 py-1 rounded-full font-semibold border border-white/5">
+                <span className="absolute bottom-3 right-3 bg-[#090a0f]/80 backdrop-blur-md text-secondary text-xs px-2.5 py-1 rounded-full font-semibold border border-white/5">
                   {heroSlides[activeSlide].rate}
                 </span>
               </div>
 
               {/* Slide Content */}
-              <div className="p-5 space-y-3">
+              <div className="p-4 lg:p-5 space-y-2 lg:space-y-3">
                 <span className="text-xs text-gray-500 font-medium">Top Tutor: {heroSlides[activeSlide].mentor}</span>
-                <h3 className="text-white font-bold text-base md:text-lg line-clamp-1">
+                <h3 className="text-white font-bold text-sm lg:text-lg line-clamp-1">
                   {heroSlides[activeSlide].title}
                 </h3>
-                <div className="flex justify-between items-center text-xs text-gray-400">
-                  <span className="flex items-center text-yellow-500">★ {heroSlides[activeSlide].rating} ({heroSlides[activeSlide].reviews} reviews)</span>
+                <div className="flex justify-between items-center text-xs text-gray-400 gap-2">
+                  <span className="flex items-center text-yellow-500 shrink-0">★ {heroSlides[activeSlide].rating} ({heroSlides[activeSlide].reviews} reviews)</span>
                   <Link href="/skills" className="text-primary hover:underline font-medium inline-flex items-center">
                     <span>View details</span>
                     <ArrowRight className="h-3 w-3 ml-1" />
@@ -193,7 +194,7 @@ export default function Home() {
             </div>
 
             {/* Slider Dots Indicator */}
-            <div className="flex space-x-2 mt-4">
+            <div className="flex space-x-2 mt-3 lg:mt-4">
               {heroSlides.map((_, index) => (
                 <button
                   key={index}
@@ -210,8 +211,8 @@ export default function Home() {
         </div>
 
         {/* Floating circles/effects for premium aesthetic */}
-        <div className="absolute top-1/4 left-1/10 w-72 h-72 bg-primary/10 rounded-full blur-3xl -z-10"></div>
-        <div className="absolute bottom-1/4 right-1/10 w-80 h-80 bg-secondary/5 rounded-full blur-3xl -z-10"></div>
+        <div className="absolute top-1/4 left-[10%] w-48 sm:w-72 h-48 sm:h-72 bg-primary/10 rounded-full blur-3xl -z-10 pointer-events-none"></div>
+        <div className="absolute bottom-1/4 right-[10%] w-56 sm:w-80 h-56 sm:h-80 bg-secondary/5 rounded-full blur-3xl -z-10 pointer-events-none"></div>
       </section>
 
       {/* Section 1: Features */}
